@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { paths } from '@/contansts/paths.contants';
+import { paths } from '@/constants/paths.constants';
 import { auth, signOut } from '@/lib/auth';
 
 export default async function Home() {

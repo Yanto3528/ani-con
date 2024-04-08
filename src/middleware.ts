@@ -3,12 +3,12 @@ import NextAuth from 'next-auth';
 
 import { authConfig } from '@/lib/auth';
 
-import { paths } from './contansts/paths.contants';
+import { paths } from './constants/paths.constants';
 import {
   authRoutes,
   defaultLoggedInRedirectRoute,
   publicRoutes,
-} from './contansts/routes.constants';
+} from './constants/routes.constants';
 
 const { auth } = NextAuth(authConfig);
 

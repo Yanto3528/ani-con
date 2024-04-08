@@ -1,6 +1,6 @@
-import { paths } from './paths.contants';
+import { paths } from './paths.constants';
 
 export const publicRoutes = ['/'];
 
 export const authRoutes = [paths.auth.register(), paths.auth.login()];
-export const defaultLoggedInRedirectRoute = paths.home();
+export const defaultLoggedInRedirectRoute = paths.main.app();
