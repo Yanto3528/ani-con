@@ -7,23 +7,23 @@ import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 
-import { signInAction } from '@/actions/auth.actions';
+import { registerAction } from '@/actions/auth.actions';
 import { ControlledInput } from '@/components/fields/ControlledInput';
 import { ControlledInputPassword } from '@/components/fields/ControlledInputPassword';
 import { Alert } from '@/components/ui/Alert';
 import { Button } from '@/components/ui/Button';
 import { defaultLoggedInRedirectRoute } from '@/constants/routes.constants';
 import GithubIcon from '@/public/icons/github.svg';
-import { loginSchema } from '@/schemas/auth.schema';
-import { LoginFormValues } from '@/types/form.types';
+import { registerSchema } from '@/schemas/auth.schema';
+import { RegisterFormValues } from '@/types/form.types';
 
-export function LoginForm() {
+export function RegisterForm() {
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<LoginFormValues>({
-    resolver: zodResolver(loginSchema),
+  } = useForm<RegisterFormValues>({
+    resolver: zodResolver(registerSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -34,7 +34,8 @@ export function LoginForm() {
 
   const onSubmit = handleSubmit(async (data) => {
     startTransition(async () => {
-      const actionData = await signInAction({
+      const actionData = await registerAction({
+        name: data.name,
         email: data.email,
         password: data.password,
       });
@@ -54,6 +55,13 @@ export function LoginForm() {
     <form onSubmit={onSubmit} className="flex flex-col gap-3">
       <ControlledInput
         control={control}
+        name="name"
+        placeholder="Enter your name"
+        label="Name"
+        errors={errors}
+      />
+      <ControlledInput
+        control={control}
         name="email"
         type="email"
         placeholder="Enter your email"
@@ -69,7 +77,7 @@ export function LoginForm() {
       />
       {errorMessage && <Alert variant="error">{errorMessage}</Alert>}
       <Button loading={isPending} type="submit" className="mt-6">
-        Login
+        Sign up
       </Button>
       <div className="relative my-6">
         <hr className="w-full text-gray-200" />
