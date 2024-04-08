@@ -6,7 +6,7 @@ export const buttonStyles = tv(
     variants: {
       colorScheme: {
         primary: 'bg-primary text-white enabled:hover:bg-primary-700',
-        secondary: 'bg-gray-200 text-gray-900 enabled:hover:bg-gray-300',
+        secondary: 'bg-gray-200 text-gray-900 enabled:hover:bg-gray-200',
         danger: 'bg-danger text-white enabled:hover:bg-red-700 focus:ring-danger-200',
       },
       variant: {
@@ -35,7 +35,7 @@ export const buttonStyles = tv(
 
         const outlineClasses = {
           primary: 'border-primary text-primary enabled:hover:bg-primary enabled:hover:text-white',
-          secondary: 'border-gray-200 text-gray-900 enabled:hover:bg-gray-200',
+          secondary: 'border-gray-200 text-gray-900 enabled:hover:bg-gray-50',
           danger: 'border-danger text-danger enabled:hover:bg-danger enabled:hover:text-white',
         } as const;
 

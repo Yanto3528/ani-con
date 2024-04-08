@@ -1,13 +1,17 @@
 'use client';
 
+import { useState, useTransition } from 'react';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { signInAction } from '@/actions/auth.actions';
 import { ControlledInput } from '@/components/fields/ControlledInput';
 import { ControlledInputPassword } from '@/components/fields/ControlledInputPassword';
+import { Alert } from '@/components/ui/Alert';
 import { Button } from '@/components/ui/Button';
 import { defaultLoggedInRedirectRoute } from '@/constants/routes.constants';
 import GithubIcon from '@/public/icons/github.svg';
@@ -27,9 +31,19 @@ export function LoginForm() {
       password: '',
     },
   });
+  const [isPending, startTransition] = useTransition();
+  const [errorMessage, setErroMessage] = useState('');
 
-  const onSubmit = handleSubmit(() => {
-    console.log('adlj');
+  const onSubmit = handleSubmit(async (data) => {
+    startTransition(async () => {
+      const actionData = await signInAction({
+        email: data.email,
+        password: data.password,
+      });
+      if (actionData?.status === 'error') {
+        setErroMessage(actionData.message);
+      }
+    });
   });
 
   const signInWithGithub = () => {
@@ -55,7 +69,8 @@ export function LoginForm() {
         label="Password"
         errors={errors}
       />
-      <Button type="submit" className="mt-6">
+      {errorMessage && <Alert variant="error">{errorMessage}</Alert>}
+      <Button loading={isPending} type="submit" className="mt-6">
         Login
       </Button>
       <div className="relative my-6">
@@ -67,7 +82,8 @@ export function LoginForm() {
       <Button
         onClick={signInWithGithub}
         variant="outline"
-        className="enabled:hover:bg-gray-50 border-gray-200 gap-4 text-gray-800 enabled:hover:text-gray-800"
+        colorScheme="secondary"
+        className="gap-4"
       >
         <Image src={GithubIcon} alt="github" width={24} height={24} />
         Sign in with Github

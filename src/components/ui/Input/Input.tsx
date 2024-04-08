@@ -47,6 +47,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           className={inputStyles({ className })}
           disabled={disabled}
           id={id || name}
+          name={name}
           {...props}
         />
         {rightElement && (
