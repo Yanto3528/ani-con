@@ -140,6 +140,26 @@ const config: Config = {
             transform: 'scale(0)',
           },
         },
+        modalScaleIn: {
+          '0%': {
+            transform: 'scale(0.95)',
+            opacity: '0',
+          },
+          '100%': {
+            transform: 'scale(1)',
+            opacity: '1',
+          },
+        },
+        modalScaleOut: {
+          '0%': {
+            transform: 'scale(1)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'scale(0.95)',
+            opacity: '0',
+          },
+        },
       },
       animation: {
         'slide-down': 'slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards',
@@ -152,9 +172,16 @@ const config: Config = {
         'scale-in': 'scaleIn 200ms ease-out forwards',
         'scale-out': 'scaleOut 200ms ease-out forwards',
         'skeleton-shimmer': 'skeletonShimmer 1000ms infinite',
+        'modal-scale-in': 'modalScaleIn 200ms 100ms ease-out forwards',
+        'modal-scale-out': 'modalScaleOut 200ms ease-out forwards',
       },
     },
   },
-  plugins: [customPlugin, require('@tailwindcss/typography')],
+  plugins: [
+    customPlugin,
+    require('@tailwindcss/typography'),
+    require('tailwindcss-animate'),
+    require('tailwindcss-radix')(),
+  ],
 };
 export default config;

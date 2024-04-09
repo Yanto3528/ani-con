@@ -2,6 +2,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { ControlledInput } from '@/components/fields/ControlledInput';
 import { ControlledSingleFileUpload } from '@/components/fields/ControlledSingleFileUpload';
+import { ControlledTextEditor } from '@/components/fields/ControlledTextEditor';
 import { CreatePostFormValues } from '@/types/form.types';
 
 export function PostFormFields() {
@@ -24,6 +25,12 @@ export function PostFormFields() {
         placeholder="Enter post title"
         label="Post title"
         errors={errors}
+      />
+      <ControlledTextEditor
+        control={control}
+        name="content"
+        label="Content"
+        placeholder="Enter post content"
       />
     </div>
   );
