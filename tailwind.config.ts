@@ -1,5 +1,14 @@
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
+import plugin from 'tailwindcss/plugin';
+
+const customPlugin = plugin(({ addUtilities, theme }) => {
+  addUtilities({
+    '.text-shadow-bold': {
+      'text-shadow': '0.3px 0 0 currentColor',
+    },
+  });
+});
 
 const config: Config = {
   content: [
@@ -59,6 +68,9 @@ const config: Config = {
       backgroundImage: {
         'gradient-skeleton':
           'linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0))',
+      },
+      boxShadow: {
+        bold: '4px 4px',
       },
       keyframes: {
         slideDown: {
@@ -143,6 +155,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [customPlugin],
 };
 export default config;

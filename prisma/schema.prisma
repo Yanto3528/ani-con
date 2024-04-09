@@ -84,14 +84,17 @@ model Following {
 }
 
 model Post {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  content   String
-  medias    Media[]
-  createdAt DateTime  @default(now())
-  updateAt  DateTime  @updatedAt
-  author    User      @relation(fields: [authorId], references: [id])
-  authorId  String    @db.ObjectId
-  comments  Comment[]
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  content    String
+  slug       String    @unique
+  coverImage String
+  medias     Media[]
+  createdAt  DateTime  @default(now())
+  updateAt   DateTime  @updatedAt
+  author     User      @relation(fields: [authorId], references: [id])
+  authorId   String    @db.ObjectId
+  comments   Comment[]
 }
 
 model Comment {

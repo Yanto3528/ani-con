@@ -4,6 +4,7 @@ export const paths = {
   home: () => '/',
   main: {
     app: () => '/app',
+    messages: () => '/messages',
   },
   auth: {
     register: () => `${AUTH_PATH}/register`,
