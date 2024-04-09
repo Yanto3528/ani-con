@@ -3,6 +3,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { PlusIcon } from 'lucide-react';
 import Image from 'next/image';
 
+import { HtmlRenderer } from '@/components/common/HtmlRenderer';
 import { PageHeader } from '@/components/common/PageHeader';
 import { Avatar } from '@/components/ui/Avatar';
 import { Button } from '@/components/ui/Button';
@@ -108,10 +109,7 @@ export default function AppPage() {
                   </div>
                 </div>
                 <h2>{post.title}</h2>
-                <div
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                  className="text-gray-500 text-sm"
-                />
+                <HtmlRenderer>{post.content}</HtmlRenderer>
               </div>
             </Card>
           ))}
