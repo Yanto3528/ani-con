@@ -10,7 +10,7 @@ export default function MainLayout({ children }: Props) {
   return (
     <div className="flex">
       <Sidebar />
-      <main>{children}</main>
+      <main className="flex-1">{children}</main>
     </div>
   );
 }

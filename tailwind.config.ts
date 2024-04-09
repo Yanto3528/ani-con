@@ -69,8 +69,8 @@ const config: Config = {
         'gradient-skeleton':
           'linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0))',
       },
-      boxShadow: {
-        bold: '4px 4px',
+      gridTemplateColumns: {
+        'main-post': 'repeat(auto-fit, minmax(250px, 1fr))',
       },
       keyframes: {
         slideDown: {
