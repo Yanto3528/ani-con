@@ -2,12 +2,15 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { PlusIcon } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { HtmlRenderer } from '@/components/common/HtmlRenderer';
+import { PageBody } from '@/components/common/PageBody/PageBody';
 import { PageHeader } from '@/components/common/PageHeader';
 import { Avatar } from '@/components/ui/Avatar';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { paths } from '@/constants/paths.constants';
 
 dayjs.extend(relativeTime);
 
@@ -89,11 +92,13 @@ export default function AppPage() {
     <div>
       <PageHeader>
         <h1>Posts</h1>
-        <Button>
-          <PlusIcon className="w-5 h-5" /> Create Post
-        </Button>
+        <Link href={paths.main.posts.create()}>
+          <Button>
+            <PlusIcon className="w-5 h-5" /> Create Post
+          </Button>
+        </Link>
       </PageHeader>
-      <div className="pt-3 pb-10 px-6">
+      <PageBody>
         <div className="grid grid-cols-main-post gap-4">
           {posts.map((post) => (
             <Card key={post.id}>
@@ -114,7 +119,7 @@ export default function AppPage() {
             </Card>
           ))}
         </div>
-      </div>
+      </PageBody>
     </div>
   );
 }

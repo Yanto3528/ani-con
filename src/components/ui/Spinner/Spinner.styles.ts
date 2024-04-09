@@ -3,9 +3,9 @@ import { tv } from '@/lib/tailwind-variant';
 export const spinnerStyles = tv('aspect-square animate-spin rounded-full', {
   variants: {
     colorScheme: {
-      primary: 'border-gray-300 border-t-primary',
-      white: 'border-gray-300 border-t-white',
-      inherit: 'border-gray-300 border-t-inherit',
+      primary: 'border-transparent border-t-primary',
+      white: 'border-transparent border-t-white',
+      inherit: 'border-transparent border-t-inherit',
     },
     size: {
       sm: 'h-4 border-2',

@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
+import { Toaster } from 'react-hot-toast';
 import colors from 'tailwindcss/colors';
 
 import './globals.css';
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className={inter.variable}>
         <NextTopLoader color={colors.blue[500]} showSpinner={false} />
         {children}
+        <Toaster />
       </body>
     </html>
   );
